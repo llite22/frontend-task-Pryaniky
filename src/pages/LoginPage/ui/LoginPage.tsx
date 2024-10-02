@@ -51,13 +51,13 @@ const LoginPage = () => {
   const onSubmit = (data: z.infer<typeof formSchema>) => mutate(data);
 
   return (
-    <div className="flex justify-center items-center w-full h-[100vh]">
+    <div className="flex justify-center items-center w-full min-h-screen p-4">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="border-4 border-dashed rounded-lg border-sky-500 p-16"
+          className="w-full max-w-md border-4 border-dashed rounded-lg border-sky-500 p-4 sm:p-8 md:p-16"
         >
-          <div className="min-w-[300px] space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             <FormField
               control={form.control}
               name="username"
@@ -95,7 +95,7 @@ const LoginPage = () => {
               )}
             />
             <Button
-              className="w-full border-4 border-double rounded-lg border-sky-500 bg-blue-500 hover:bg-blue-700 "
+              className="w-full border-4 border-double rounded-lg border-sky-500 bg-blue-500 hover:bg-blue-700"
               type="submit"
             >
               {"Login"}
