@@ -3,11 +3,16 @@ import { LoginPage } from "@/pages/LoginPage";
 import { AppRoutesProps } from "@/shared/types/router";
 import { MainPage } from "@/pages/MainPage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
+import { PublicRoute } from "../ui/PublicRoute";
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   [AppRoutes.Login]: {
     path: getRouteLogin(),
-    element: <LoginPage />,
+    element: (
+      <PublicRoute>
+        <LoginPage />
+      </PublicRoute>
+    ),
   },
 
   [AppRoutes.Main]: {

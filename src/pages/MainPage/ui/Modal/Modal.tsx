@@ -1,6 +1,7 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+import {
+  CreateUpdateTableData,
+  TableData,
+} from "@/shared/hooks/useTable/useTable";
 import { Button } from "@/shared/ui/button";
 import {
   Form,
@@ -11,10 +12,9 @@ import {
   FormMessage,
 } from "@/shared/ui/form";
 import { Input } from "@/shared/ui/input";
-import {
-  CreateUpdateTableData,
-  TableData,
-} from "@/shared/hooks/UseTable/UseTable";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 const formSchema = z.object({
   documentStatus: z.string().min(2, {

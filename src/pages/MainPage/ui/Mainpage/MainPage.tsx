@@ -1,4 +1,7 @@
-import { TableData, useTable } from "@/shared/hooks/UseTable/UseTable";
+import { USER_LOCALSTORAGE_KEY } from "@/shared/const/localstorage";
+import { getRouteLogin } from "@/shared/const/router";
+import { TableData, useTable } from "@/shared/hooks/useTable/useTable";
+import { Button } from "@/shared/ui/button";
 import {
   Table,
   TableBody,
@@ -7,13 +10,24 @@ import {
   TableHeader,
   TableRow,
 } from "@/shared/ui/table";
+import { useCallback, useState } from "react";
+import { useNavigate } from "react-router";
 import { MoonLoader } from "react-spinners";
 import Modal from "../Modal/Modal";
-import { Button } from "@/shared/ui/button";
-import { useCallback, useState } from "react";
-import { USER_LOCALSTORAGE_KEY } from "@/shared/const/localstorage";
-import { useNavigate } from "react-router";
-import { getRouteLogin } from "@/shared/const/router";
+
+const tableHead = [
+  "id",
+  "documentStatus",
+  "employeeNumber",
+  "documentType",
+  "documentName",
+  "companySignatureName",
+  "employeeSignatureName",
+  "employeeSigDate",
+  "companySigDate",
+  "update",
+  "delete",
+];
 
 const MainPage = () => {
   const {
@@ -57,20 +71,6 @@ const MainPage = () => {
       <div className="flex justify-center items-center h-[100vh]">Error</div>
     );
   }
-
-  const tableHead = [
-    "id",
-    "documentStatus",
-    "employeeNumber",
-    "documentType",
-    "documentName",
-    "companySignatureName",
-    "employeeSignatureName",
-    "employeeSigDate",
-    "companySigDate",
-    "update",
-    "delete",
-  ];
 
   return (
     <>

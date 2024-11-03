@@ -11,7 +11,7 @@ import {
 } from "@/shared/ui/form";
 import { Input } from "@/shared/ui/input";
 import { Button } from "@/shared/ui/button";
-import { useAuth } from "@/shared/hooks/UserApi/UserApi";
+import { useAuth } from "@/shared/hooks/useAuth/useAuth";
 import { MoonLoader } from "react-spinners";
 
 const LoginPage = () => {
