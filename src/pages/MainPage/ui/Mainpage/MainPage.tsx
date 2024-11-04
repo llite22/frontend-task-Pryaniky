@@ -58,19 +58,6 @@ const MainPage = () => {
     setActiveModal((prev) => !prev);
   }, []);
 
-  if (isPending || isDeleting || isCreating || isUpdating) {
-    return (
-      <div className="flex w-full justify-center items-center h-[100vh]">
-        <MoonLoader color={"#36d7b7"} loading={true} size={70} />
-      </div>
-    );
-  }
-
-  if (isError || isDeletingError || isCreatingError || isUpdatingError) {
-    return (
-      <div className="flex justify-center items-center h-[100vh]">Error</div>
-    );
-  }
 
   return (
     <>
@@ -111,7 +98,26 @@ const MainPage = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data && data.length > 0 ? (
+          {isPending || isDeleting || isCreating || isUpdating ? (
+            <TableRow>
+              <TableCell colSpan={11} className="text-center">
+                <div className="flex justify-center items-center h-[50vh]">
+                  <MoonLoader color={"#36d7b7"} loading={true} size={70} />
+                </div>
+              </TableCell>
+            </TableRow>
+          ) : isError ||
+            isDeletingError ||
+            isCreatingError ||
+            isUpdatingError ? (
+            <TableRow>
+              <TableCell colSpan={11} className="text-center">
+                <div className="flex justify-center items-center h-[50vh]">
+                  Error
+                </div>
+              </TableCell>
+            </TableRow>
+          ) : data && data.length > 0 ? (
             data.map((invoice) => (
               <TableRow className="text-center" key={invoice.id}>
                 <TableCell>{invoice.id}</TableCell>
@@ -143,7 +149,7 @@ const MainPage = () => {
             ))
           ) : (
             <TableRow>
-              <TableCell colSpan={8} className="text-center">
+              <TableCell colSpan={11} className="text-center">
                 No data available
               </TableCell>
             </TableRow>
