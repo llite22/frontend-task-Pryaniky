@@ -1,6 +1,6 @@
 import { USER_LOCALSTORAGE_KEY } from "@/shared/const/localstorage";
 import { getRouteLogin } from "@/shared/const/router";
-import { TableData, useTable } from "@/shared/hooks/useTable/useTable";
+import { TableData, useTable } from "@/shared/hooks/UseTable/UseTable";
 import { Button } from "@/shared/ui/button";
 import {
   Table,

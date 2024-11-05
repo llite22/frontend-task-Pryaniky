@@ -1,7 +1,7 @@
 import {
   CreateUpdateTableData,
   TableData,
-} from "@/shared/hooks/useTable/useTable";
+} from "@/shared/hooks/UseTable/UseTable";
 import { Button } from "@/shared/ui/button";
 import {
   Form,
