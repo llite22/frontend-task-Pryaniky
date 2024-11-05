@@ -22,8 +22,8 @@ interface LoginResponseData {
 export const useAuth = () => {
     const navigate = useNavigate()
     const { mutate, isPending, isError } = useMutation({
-        mutationFn: ({ username, password }: LoginByUsernameProps) => {
-            return $api.post<LoginResponseData>('/ru/data/v3/testmethods/docs/login', { username, password })
+        mutationFn: async ({ username, password }: LoginByUsernameProps) => {
+            return await $api.post<LoginResponseData>('/ru/data/v3/testmethods/docs/login', { username, password })
         },
         onSuccess: ({ data }) => {
             if (data) {

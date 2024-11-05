@@ -35,8 +35,8 @@ export const useTable = () => {
 
   const { data, isPending, isError } = useQuery({
     queryKey: ["testmethods"],
-    queryFn: () =>
-      $api.get<ApiResponse>("/ru/data/v3/testmethods/docs/userdocs/get"),
+    queryFn: async () =>
+      await $api.get<ApiResponse>("/ru/data/v3/testmethods/docs/userdocs/get"),
     select: (response) => response.data,
   });
 
@@ -45,8 +45,8 @@ export const useTable = () => {
     isPending: isCreating,
     isError: isCreatingError,
   } = useMutation({
-    mutationFn: (newData: CreateUpdateTableData) =>
-      $api.post<ApiResponse>(
+    mutationFn: async (newData: CreateUpdateTableData) =>
+      await $api.post<ApiResponse>(
         "/ru/data/v3/testmethods/docs/userdocs/create",
         newData
       ),
@@ -60,8 +60,14 @@ export const useTable = () => {
     isPending: isUpdating,
     isError: isUpdatingError,
   } = useMutation({
-    mutationFn: ({ id, data }: { id: string; data: CreateUpdateTableData }) =>
-      $api.post<ApiResponse>(
+    mutationFn: async ({
+      id,
+      data,
+    }: {
+      id: string;
+      data: CreateUpdateTableData;
+    }) =>
+      await $api.post<ApiResponse>(
         `/ru/data/v3/testmethods/docs/userdocs/set/${id}`,
         data
       ),
@@ -75,8 +81,8 @@ export const useTable = () => {
     isPending: isDeleting,
     isError: isDeletingError,
   } = useMutation({
-    mutationFn: (id: string) =>
-      $api.post<ApiResponse>(
+    mutationFn: async (id: string) =>
+      await $api.post<ApiResponse>(
         `/ru/data/v3/testmethods/docs/userdocs/delete/${id}`
       ),
     onSuccess: () => {
